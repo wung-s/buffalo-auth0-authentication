@@ -11,6 +11,15 @@ import (
 	"github.com/wung-s/ukhrul/models"
 )
 
+// Auth0APIAudience identifies the server in Auth0
+var Auth0APIAudience = []string{"https://ukhrul/"}
+
+const (
+	// Auth0APIIssuer is the issuer
+	Auth0APIIssuer = "https://wung.auth0.com/"
+	JwksURI        = "https://wung.auth0.com/.well-known/jwks.json"
+)
+
 // ENV is used to help switch settings based on where the
 // application is being run. Default is "development".
 var ENV = envy.Get("GO_ENV", "development")
@@ -43,9 +52,11 @@ func App() *buffalo.App {
 		//  c.Value("tx").(*pop.PopTransaction)
 		// Remove to disable this.
 		app.Use(middleware.PopTransaction(models.DB))
-
+		app.Use(Authenticate)
+		app.Middleware.Skip(Authenticate, HomeHandler)
 		app.GET("/", HomeHandler)
 
+		app.GET("/info", MySecuredEndpoint)
 	}
 
 	return app
