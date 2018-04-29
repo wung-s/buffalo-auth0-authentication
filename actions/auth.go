@@ -26,11 +26,11 @@ func Authenticate(next buffalo.Handler) buffalo.Handler {
 }
 
 func checkJwt(w http.ResponseWriter, r *http.Request) error {
-	client := auth0.NewJWKClient(auth0.JWKClientOptions{URI: JwksURI})
+	client := auth0.NewJWKClient(auth0.JWKClientOptions{URI: JwksURI}, nil)
 	audience := Auth0APIAudience
 
 	configuration := auth0.NewConfiguration(client, audience, Auth0APIIssuer, jose.RS256)
-	validator := auth0.NewValidator(configuration)
+	validator := auth0.NewValidator(configuration, nil)
 
 	_, err := validator.ValidateRequest(r)
 

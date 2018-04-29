@@ -2,4 +2,18 @@ This repository is set up as part of a [blog post](https://medium.com/@wung_s/in
 
 Head over to the blog to follow along. Happy coding !!
 
+### Steps to run locally
+
+Note: You will have to set up your Auth0 first
+
+```
+$ git clone git@github.com:wung-s/buffalo-auth0-authentication.git
+
+$ cd buffalo-auth0-authentication && buffalo db create -a
+
+$ dep ensure
+
+$ buffalo dev
+```
+
 [Powered by Buffalo](http://gobuffalo.io)
