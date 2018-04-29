@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/wung-s/ukhrul/actions"
+	"github.com/wung-s/buffalo-auth0-authentication/actions"
 )
 
 func main() {

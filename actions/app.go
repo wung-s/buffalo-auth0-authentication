@@ -8,7 +8,7 @@ import (
 	"github.com/unrolled/secure"
 
 	"github.com/gobuffalo/x/sessions"
-	"github.com/wung-s/ukhrul/models"
+	"github.com/wung-s/buffalo-auth0-authentication/models"
 )
 
 // Auth0APIAudience identifies the server in Auth0
@@ -33,7 +33,7 @@ func App() *buffalo.App {
 		app = buffalo.New(buffalo.Options{
 			Env:          ENV,
 			SessionStore: sessions.Null{},
-			SessionName:  "_ukhrul_session",
+			SessionName:  "_buffalo-auth0-authentication_session",
 		})
 		// Automatically redirect to SSL
 		app.Use(ssl.ForceSSL(secure.Options{
