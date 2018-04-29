@@ -43,7 +43,7 @@
 
 [[constraint]]
   name = "github.com/gobuffalo/pop"
-  version = "3.60.6"
+  version = "4.0.5"
 
 [[constraint]]
   branch = "master"
